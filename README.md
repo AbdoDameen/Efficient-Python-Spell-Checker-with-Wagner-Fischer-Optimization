@@ -45,8 +45,8 @@ While Wagner-Fischer is correct, computing it for a misspelled word against ever
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
-    cd <your-repo-directory>
+    git clone <https://github.com/AbdoDameen/Efficient-Python-Spell-Checker-with-Wagner-Fischer-Optimization.git>
+    cd <gh repo clone AbdoDameen/Efficient-Python-Spell-Checker-with-Wagner-Fischer-Optimization>
     ```
 2.  **Ensure Python 3.7+ is installed.**
 3.  **Obtain a Dictionary File:** You need a plain text file containing a list of correctly spelled words, one word per line. Name this file `words.txt` and place it in the same directory as the Python script, or update the `DICTIONARY_FILE` constant in the script. Common sources include `/usr/share/dict/words` on Linux/macOS or online wordlists.
@@ -96,3 +96,37 @@ else:
 suggestions_alt = spell_check("recieve", dictionary, num_suggestions=5, max_edit_distance=2)
 print(f"\nTop 5 suggestions for 'recieve' (max distance 2):")
 # ... (display logic) ...
+
+## Implementation Details
+
+## Author
+
+**Abdelrhman Dameen**
+- Email: Ahmedbhry22@yahoo.com
+- Website: [DameenAnalytics.com](https://DameenAnalytics.com)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+Abdelrhman Dameen - [Ahmedbhry22@yahoo.com](mailto:Ahmedbhry22@yahoo.com)
+
+Project Link: [DameenAnalytics.com](https://DameenAnalytics.com)
+
+## Acknowledgments
+
+* Wagner and Fischer for the original algorithm
+* Python heapq module developers
+* Contributors to the word list
