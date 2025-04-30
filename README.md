@@ -46,7 +46,7 @@ While Wagner-Fischer is correct, computing it for a misspelled word against ever
 1.  **Clone the repository:**
     ```bash
     git clone <https://github.com/AbdoDameen/Efficient-Python-Spell-Checker-with-Wagner-Fischer-Optimization.git>
-    cd <gh repo clone AbdoDameen/Efficient-Python-Spell-Checker-with-Wagner-Fischer-Optimization>
+    
     ```
 2.  **Ensure Python 3.7+ is installed.**
 3.  **Obtain a Dictionary File:** You need a plain text file containing a list of correctly spelled words, one word per line. Name this file `dictionary.txt` and place it in the same directory as the Python script, or update the `DICTIONARY_FILE` constant in the script. Common sources include `/usr/share/dict/words` on Linux/macOS or online wordlists.
