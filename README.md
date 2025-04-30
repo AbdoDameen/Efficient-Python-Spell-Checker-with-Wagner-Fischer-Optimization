@@ -49,53 +49,68 @@ While Wagner-Fischer is correct, computing it for a misspelled word against ever
     cd <gh repo clone AbdoDameen/Efficient-Python-Spell-Checker-with-Wagner-Fischer-Optimization>
     ```
 2.  **Ensure Python 3.7+ is installed.**
-3.  **Obtain a Dictionary File:** You need a plain text file containing a list of correctly spelled words, one word per line. Name this file `words.txt` and place it in the same directory as the Python script, or update the `DICTIONARY_FILE` constant in the script. Common sources include `/usr/share/dict/words` on Linux/macOS or online wordlists.
+3.  **Obtain a Dictionary File:** You need a plain text file containing a list of correctly spelled words, one word per line. Name this file `dictionary.txt` and place it in the same directory as the Python script, or update the `DICTIONARY_FILE` constant in the script. Common sources include `/usr/share/dict/words` on Linux/macOS or online wordlists.
 
 ## Usage
 
 ```python
-from spell_checker import load_dictionary, spell_check # Assuming your file is named spell_checker.py
+# Import from spell_checker_WandF.py
+from spell_checker_WandF import load_dictionary, spell_check
 
 # --- Configuration ---
-DICTIONARY_FILE = "words.txt"
+DICTIONARY_FILE = "dictionary.txt"
 NUM_SUGGESTIONS = 10
 MAX_EDIT_DIST = 3
 
-# --- Load Dictionary ---
+# --- Load Dictionary (Handle potential errors) ---
 try:
     print(f"Loading dictionary from {DICTIONARY_FILE}...")
     dictionary = load_dictionary(DICTIONARY_FILE)
     print(f"Dictionary loaded with {len(dictionary)} words.")
 except FileNotFoundError:
     print(f"Error: Dictionary file '{DICTIONARY_FILE}' not found.")
-    exit()
+    print("Please ensure 'dictionary.txt' exists in the same directory or update the path.")
+    exit() # Or handle appropriately
 except Exception as e:
-    print(f"An error occurred loading the dictionary: {e}")
-    exit()
+    print(f"An unexpected error occurred loading the dictionary: {e}")
+    exit() # Or handle appropriately
 
-# --- Perform Spell Check ---
-misspelled_word = "wrlod"
+# --- Perform Spell Check - Example 1 ---
+misspelled_word_1 = "wrlod"
 
-print(f"\nFinding suggestions for '{misspelled_word}'...")
-suggestions = spell_check(
-    word=misspelled_word,
+print(f"\nFinding suggestions for '{misspelled_word_1}'...")
+suggestions_1 = spell_check(
+    word=misspelled_word_1,
     dictionary=dictionary,
     num_suggestions=NUM_SUGGESTIONS,
     max_edit_distance=MAX_EDIT_DIST
 )
 
-# --- Display Results ---
-print(f"\nTop {NUM_SUGGESTIONS} suggestions for '{misspelled_word}' (max distance {MAX_EDIT_DIST}):")
-if suggestions:
-    for suggested_word, distance in suggestions:
+# --- Display Results - Example 1 ---
+print(f"\nTop {NUM_SUGGESTIONS} suggestions for '{misspelled_word_1}' (max distance {MAX_EDIT_DIST}):")
+if suggestions_1:
+    for suggested_word, distance in suggestions_1:
         print(f"- {suggested_word} (Distance: {distance})")
 else:
     print("No suggestions found within the maximum edit distance.")
 
-# Example with different parameters:
-suggestions_alt = spell_check("recieve", dictionary, num_suggestions=5, max_edit_distance=2)
-print(f"\nTop 5 suggestions for 'recieve' (max distance 2):")
-# ... (display logic) ...
+# --- Perform Spell Check - Example 2 (Different Parameters) ---
+misspelled_word_2 = "recieve"
+suggestions_2 = spell_check(
+    word=misspelled_word_2,
+    dictionary=dictionary,
+    num_suggestions=5, # Fewer suggestions
+    max_edit_distance=2 # Stricter distance
+)
+
+# --- Display Results - Example 2 ---
+print(f"\nTop 5 suggestions for '{misspelled_word_2}' (max distance 2):")
+if suggestions_2:
+    for suggested_word, distance in suggestions_2:
+        print(f"- {suggested_word} (Distance: {distance})")
+else:
+    print("No suggestions found within the maximum edit distance.")
+```
 
 ## Implementation Details
 
